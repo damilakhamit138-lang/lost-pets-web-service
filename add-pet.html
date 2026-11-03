@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хабарландыру қосу — PetFinder KZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 py-10">
+
+    <div class="max-w-2xl mx-auto px-4">
+        
+        <!-- Жоғарғы Навигация -->
+        <div class="mb-6 flex justify-between items-center">
+            <a href="index.html" class="text-amber-600 text-sm font-semibold flex items-center gap-1">
+                <i class="fa-solid fa-arrow-left"></i> Басты бетке қайту
+            </a>
+            <span class="text-xs text-slate-400">PetFinder KZ платформасы</span>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+            <div class="bg-amber-500 text-white p-6">
+                <h1 class="text-2xl font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-file-circle-plus"></i> Жаңа хабарландыру жариялау
+                </h1>
+                <p class="text-xs opacity-90 mt-1">Жоғалған немесе табылған жануар туралы толық мәлімет енгізіңіз</p>
+            </div>
+
+            <form class="p-6 md:p-8 space-y-5" onsubmit="event.preventDefault(); alert('Хабарландыру сәтті жарияланды!'); location.href='index.html';">
+                
+                <!-- Мәртебесі -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Хабарландыру мәртебесі (Статус)</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="border-2 border-red-400 bg-red-50 p-3 rounded-xl flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="status" checked class="text-red-500">
+                            <span class="text-sm font-bold text-red-700">Жоғалды</span>
+                        </label>
+                        <label class="border-2 border-emerald-400 bg-emerald-50 p-3 rounded-xl flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="status" class="text-emerald-500">
+                            <span class="text-sm font-bold text-emerald-700">Табылды</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Негізгі сипаттамалар -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Тақырыбы / Аты</label>
+                        <input type="text" placeholder="Мысалы: Хаски «Локи» жоғалды" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Жануар түрі</label>
+                        <select class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                            <option>Ит</option>
+                            <option>Мысық</option>
+                            <option>Құс</option>
+                            <option>Басқа жануар</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Қала және Орын -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Қала / Елді мекен</label>
+                        <input type="text" placeholder="Мысалы: Алматы" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Жоғалған/Табылған көше</label>
+                        <input type="text" placeholder="Абай даңғылы, 15 үй" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    </div>
+                </div>
+
+                <!-- Картадан белгілеу батырмасы -->
+                <button type="button" onclick="alert('Интерактивті карта ашылды. Геолокация сақталды!')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border border-slate-300">
+                    <i class="fa-solid fa-map-pin text-amber-600"></i> Интерактивті картадан орналасқан жерді белгілеу
+                </button>
+
+                <!-- Сурет жүктеу -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Жануардың фотосуретін жүктеу</label>
+                    <div class="border-2 border-dashed border-amber-300 rounded-2xl p-6 text-center bg-amber-50/30 hover:bg-amber-50 transition cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-amber-500 mb-2"></i>
+                        <p class="text-xs text-slate-600">Суретті осы жерге тастаңыз немесе таңдаңыз</p>
+                        <input type="file" class="hidden" id="petImg">
+                    </div>
+                </div>
+
+                <!-- Толық сипаттама -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Толық сипаттамасы мен ерекше белгілері</label>
+                    <textarea rows="3" placeholder="Мойнындағы қарғыбау түсі, мінезі, сүйінші көлемі..." class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm"></textarea>
+                </div>
+
+                <!-- AI мүмкіндігін белгілеу -->
+                <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 flex items-center gap-3">
+                    <input type="checkbox" id="aiCheck" checked class="w-4 h-4 text-amber-600 rounded">
+                    <label for="aiCheck" class="text-xs text-slate-700">
+                        <b>AI Сурет сәйкестендіруді қосу:</b> Сурет жүктелгенде жүйе автоматты түрде ұқсас хабарландыруларды іздейді.
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-amber-200 transition text-base">
+                    Хабарландыруды жариялау
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

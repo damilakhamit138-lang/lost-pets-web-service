@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кіру және Тіркелу — PetFinder KZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-md border border-slate-200">
+        
+        <!-- Тақырыбы -->
+        <div class="bg-amber-500 text-white p-6 text-center">
+            <a href="index.html" class="text-2xl font-black flex items-center justify-center gap-2 mb-1">
+                <i class="fa-solid fa-paw"></i> PetFinder KZ
+            </a>
+            <p class="text-xs opacity-90">Жеке кабинетке кіру немесе жаңа аккаунт ашу</p>
+        </div>
+
+        <!-- Ауыстыру вкладкалары -->
+        <div class="flex border-b border-slate-100 text-center text-sm font-semibold text-slate-600">
+            <button id="loginTab" onclick="switchForm('login')" class="w-1/2 py-3 border-b-2 border-amber-500 text-amber-600 bg-amber-50/50">Жүйеге кіру</button>
+            <button id="registerTab" onclick="switchForm('register')" class="w-1/2 py-3 hover:text-amber-600">Тіркелу</button>
+        </div>
+
+        <!-- Кіру Формасы -->
+        <form id="loginForm" class="p-6 space-y-4" onsubmit="event.preventDefault(); alert('Жүйеге кіру сәтті өтті!'); location.href='index.html';">
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Электронды пошта</label>
+                <input type="email" placeholder="example@mail.com" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Құпия сөз</label>
+                <input type="password" placeholder="••••••••" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <div class="flex justify-between items-center text-xs">
+                <label class="flex items-center text-slate-500"><input type="checkbox" class="mr-1 rounded"> Есте сақтау</label>
+                <a href="#" class="text-amber-600 hover:underline">Құпия сөзді ұмыттыңыз ба?</a>
+            </div>
+            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-bold shadow-md transition">Кіру</button>
+        </form>
+
+        <!-- Тіркелу Формасы (Жасырын) -->
+        <form id="registerForm" class="p-6 space-y-4 hidden" onsubmit="event.preventDefault(); alert('Тіркелу сәтті аяқталды!'); switchForm('login');">
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Аты-жөніңіз</label>
+                <input type="text" placeholder="Асан Әлиев" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Телефон нөмір</label>
+                <input type="tel" placeholder="+7 (700) 000 00 00" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Электронды пошта</label>
+                <input type="email" placeholder="example@mail.com" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Құпия сөз жасау</label>
+                <input type="password" placeholder="••••••••" required class="w-full px-4 py-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-bold shadow-md transition">Тіркелуді аяқтау</button>
+        </form>
+
+        <!-- Басты бетке кайту -->
+        <div class="bg-slate-50 p-4 border-t border-slate-100 text-center">
+            <a href="index.html" class="text-xs text-slate-500 hover:text-amber-600 font-medium">← Басты бетке қайту</a>
+        </div>
+    </div>
+
+    <script>
+        function switchForm(type) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+
+            if(type === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                loginTab.classList.add('border-b-2', 'border-amber-500', 'text-amber-600', 'bg-amber-50/50');
+                registerTab.classList.remove('border-b-2', 'border-amber-500', 'text-amber-600', 'bg-amber-50/50');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                registerTab.classList.add('border-b-2', 'border-amber-500', 'text-amber-600', 'bg-amber-50/50');
+                loginTab.classList.remove('border-b-2', 'border-amber-500', 'text-amber-600', 'bg-amber-50/50');
+            }
+        }
+    </script>
+</body>
+</html>
