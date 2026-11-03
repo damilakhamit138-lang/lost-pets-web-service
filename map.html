@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивті карта — PetFinder KZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Навигация -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black text-amber-600 flex items-center gap-2">
+                <i class="fa-solid fa-paw text-amber-500"></i> PetFinder <span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-md font-bold">KZ</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-slate-600 hover:text-amber-600 font-semibold px-3 py-2 rounded-lg">Басты бет</a>
+                <a href="map.html" class="text-amber-600 font-semibold px-3 py-2 rounded-lg bg-amber-50">Карта</a>
+                <a href="chat.html" class="text-slate-600 hover:text-amber-600 font-semibold px-3 py-2 rounded-lg">Чат</a>
+                <a href="add-pet.html" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl font-semibold shadow-md">Хабарландыру қосу</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Негізгі бөлім -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-amber-500"></i> Интерактивті карта және Геолокация
+                </h1>
+                <p class="text-sm text-slate-500">Аймағыңыздағы жоғалған және табылған жануарлардың нақты орналасқан нүктелері</p>
+            </div>
+            <div class="flex gap-2">
+                <select class="px-4 py-2 bg-white border rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+                    <option>Барлық қалалар</option>
+                    <option>Алматы</option>
+                    <option>Астана</option>
+                    <option>Шымкент</option>
+                </select>
+                <button onclick="alert('Радар іске қосылды: Жақын маңдағы жануарлар ізделуде...')" class="bg-amber-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow hover:bg-amber-600 transition">
+                    <i class="fa-solid fa-radar mr-1"></i> Радарды қосу
+                </button>
+            </div>
+        </div>
+
+        <!-- Карта Симуляциясы мен Тізім панелі -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Сол жақ: Нүктелер тізімі -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="font-bold text-slate-700 text-sm">Жақын маңдағы белгілер (3)</h3>
+                
+                <div class="p-3 bg-red-50 border border-red-200 rounded-xl cursor-pointer hover:bg-red-100 transition">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-red-700 bg-red-200 px-2 py-0.5 rounded">Жоғалды</span>
+                        <span class="text-xs text-slate-500">1.2 км қашықтықта</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm">Ретривер «Бобби»</h4>
+                    <p class="text-xs text-slate-600">Алматы қ., Абай даңғылы</p>
+                </div>
+
+                <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl cursor-pointer hover:bg-emerald-100 transition">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-200 px-2 py-0.5 rounded">Табылды</span>
+                        <span class="text-xs text-slate-500">3.5 км қашықтықта</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm">Шотланд мысығы</h4>
+                    <p class="text-xs text-slate-600">Астана қ., Есіл ауданы</p>
+                </div>
+
+                <div class="p-3 bg-red-50 border border-red-200 rounded-xl cursor-pointer hover:bg-red-100 transition">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-red-700 bg-red-200 px-2 py-0.5 rounded">Жоғалды</span>
+                        <span class="text-xs text-slate-500">5.0 км қашықтықта</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm">Бигль «Макс»</h4>
+                    <p class="text-xs text-slate-600">Шымкент қ., Орталық саябақ</p>
+                </div>
+            </div>
+
+            <!-- Оң жақ: Үлкен Карта Макеті -->
+            <div class="lg:col-span-2 bg-slate-200 rounded-2xl shadow-inner h-[450px] relative overflow-hidden flex items-center justify-center border border-slate-300">
+                <!-- Карта фондық суреті немесе симуляция визуалы -->
+                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                
+                <div class="text-center p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl max-w-sm mx-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold shadow">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800 mb-1">Геолокация активті</h3>
+                    <p class="text-xs text-slate-500 mb-4">Сіздің орналасқан жеріңіз анықталды. Картадан айналаңыздағы хабарландыруларды көре аласыз.</p>
+                    <button onclick="alert('Карта масштабы жаңартылды!')" class="bg-slate-800 text-white text-xs px-4 py-2 rounded-xl font-bold shadow hover:bg-slate-900 transition">
+                        Картаны толық экранға ашу
+                    </button>
+                </div>
+
+                <!-- Маркерлер симуляциясы -->
+                <div class="absolute top-16 left-20 bg-red-500 text-white p-2 rounded-full shadow-lg animate-bounce">
+                    <i class="fa-solid fa-paw text-xs"></i>
+                </div>
+                <div class="absolute bottom-20 right-28 bg-emerald-500 text-white p-2 rounded-full shadow-lg animate-bounce">
+                    <i class="fa-solid fa-paw text-xs"></i>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
