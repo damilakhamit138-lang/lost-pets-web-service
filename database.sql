@@ -1,0 +1,21 @@
+-- phpMyAdmin SQL Dump
+CREATE DATABASE IF NOT EXISTS petfinder_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE petfinder_db;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
